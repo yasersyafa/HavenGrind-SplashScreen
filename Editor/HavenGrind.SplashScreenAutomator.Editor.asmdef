@@ -1,6 +1,6 @@
 {
-    "name": "HavenGrind.WebGLAutomation.Editor",
-    "rootNamespace": "WebGLAutomation.Editor",
+    "name": "HavenGrind.SplashScreenAutomator.Editor",
+    "rootNamespace": "SplashScreenAutomator.Editor",
     "references": [],
     "includePlatforms": [
         "Editor"

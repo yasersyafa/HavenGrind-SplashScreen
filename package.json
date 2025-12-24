@@ -1,8 +1,8 @@
 {
-  "name": "com.havengrind.webgl-automation",
+  "name": "com.havengrind.splash-screen-automator",
   "version": "1.0.0",
-  "displayName": "Haven Grind: WebGL Setup",
-  "description": "WebGL setup automation with custom splash screen",
+  "displayName": "Haven Grind: Splash Screen Automator",
+  "description": "Setup automation custom splash screen",
   "unity": "2022.1",
   "author": {
     "name": "Haven Grind",
