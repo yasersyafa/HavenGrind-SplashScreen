@@ -30,3 +30,6 @@ The script monitors the `PlayerSettings` and ensures that:
 ## Requirements
 * Unity 2022.1 or higher.
 * Logo file must be located at: `Editor/CompanyLogo/Logo.png` inside the package.
+
+## Documents
+If you interested with our other package, you can check our [document wrapper](https://docs.google.com/document/d/18A5CUzlVdKvv427L3b-WXLwwSCJdo7ohOwWbwGPyrQM/edit?usp=sharing)
