@@ -1,6 +1,6 @@
 {
   "name": "com.havengrind.splash-screen-automator",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "displayName": "Haven Grind: Splash Screen Automator",
   "description": "Setup automation custom splash screen",
   "unity": "2022.1",
