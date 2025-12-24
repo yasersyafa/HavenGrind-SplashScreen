@@ -1,16 +1,18 @@
+using System.Collections.Generic;
+using System.Linq;
 using UnityEditor;
 using UnityEditor.Build;
 using UnityEditor.Build.Reporting;
 using UnityEngine;
 
-namespace WebGLAutomation.Editor
+namespace SplashScreenAutomator.Editor
 {
     [InitializeOnLoad]
     public class SplashScreenAutomator : IPreprocessBuildWithReport
     {
         private const string LOGO_PATH = "Packages/com.havengrind.webgl-automation/Editor/CompanyLogo/Logo.png";
 
-        // Interface requirement: menentukan urutan eksekusi (0 berarti paling awal)
+        // Interface requirement: execution order (0 means first execution)
         public int callbackOrder => 0;
 
         static SplashScreenAutomator()
@@ -40,20 +42,29 @@ namespace WebGLAutomation.Editor
             PlayerSettings.SplashScreen.drawMode = PlayerSettings.SplashScreen.DrawMode.AllSequential;
 
             var currentLogos = PlayerSettings.SplashScreen.logos;
+            
+            List<PlayerSettings.SplashScreenLogo> logoList = PlayerSettings.SplashScreen.logos.ToList();
 
-            if(
-                currentLogos.Length < 2 
-                || 
-                currentLogos[0].logo != PlayerSettings.SplashScreenLogo.unityLogo
-                ||
-                currentLogos[1].logo != companyLogo
-            )
-            {    
-                var newLogos = new PlayerSettings.SplashScreenLogo[2];
-                newLogos[0] = new PlayerSettings.SplashScreenLogo { logo = PlayerSettings.SplashScreenLogo.unityLogo, duration = 2f };
-                newLogos[1] = new PlayerSettings.SplashScreenLogo { logo = companyLogo, duration = 2f };
-                PlayerSettings.SplashScreen.logos = newLogos;
-            }
+            logoList.RemoveAll(
+                l => l.logo == null || 
+                l.logo == companyLogo || 
+                l.logo == PlayerSettings.SplashScreenLogo.unityLogo
+            );
+
+            // ----- INSERT LOGO -----
+            logoList.Insert(0, new PlayerSettings.SplashScreenLogo
+            {
+                logo = PlayerSettings.SplashScreenLogo.unityLogo,
+                duration = 2f
+            });
+
+            logoList.Insert(1, new PlayerSettings.SplashScreenLogo
+            {
+                logo = companyLogo,
+                duration = 2f
+            });
+
+            PlayerSettings.SplashScreen.logos = logoList.ToArray();
             
             if (isForcing)
             {
